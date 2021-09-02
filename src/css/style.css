@@ -1,0 +1,97 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+*{
+    box-sizing: border-box;
+}
+
+.header{
+    height: 67px;
+    background-color: #c3cfd9;
+    font-weight: 400;
+    font-size: 34px;
+    color: #e8833a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    height: 110px;
+    font-weight: 400;
+    color: #293845;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filmes-conteiner{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.filme{
+    width: 145px;
+    height: 209px;
+    background-color: aquamarine;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 11px;
+}
+.filme img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.filme:active{
+    transform: scale(0.97);
+    transition: transform .6s;
+}
+
+.sessao{
+    margin-left: 23px;
+}
+h2{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23.44px;
+    letter-spacing: 0.02em;
+    color: #293845;
+    margin-bottom: 23px;
+}
+.horario-sessao{
+    margin-bottom: 23px;
+    background-color: #e8833a;
+    border-radius: 3px;
+    width: 83px;
+    height: 43px;
+    margin-right: 8px;
+    font-size: 18px;
+    color: #ffffff;
+}
+.botoes-conteiner{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+.botao-assento{
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    margin-right: 7px;
+    margin-top: 18px;
+}
+.disponivel{
+    background-color: #c3cfd9
+}
+.selecionado{
+    background-color: #8dd7cf
+}
+.indisponivel{
+    background-color: #fbe192;
+}
