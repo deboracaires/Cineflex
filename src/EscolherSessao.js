@@ -13,7 +13,6 @@ export default function EscolherSessao(){
     
     const {idSessoes} = useParams();
     
-    console.log(idSessoes)
     useEffect(() => {
         const promisse = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies/${idSessoes}/showtimes`);
         promisse.then(resposta => {
@@ -22,7 +21,7 @@ export default function EscolherSessao(){
     }, []);
     
     if(sessoes === null){
-        return "carregando filmes...";
+        return "carregando sessoes...";
     }
     
     

@@ -88,13 +88,67 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
 }
 .disponivel{
-    background-color: #c3cfd9
+    background-color: #c3cfd9;
+    border: 1px solid #79acd6;
 }
 .selecionado{
-    background-color: #8dd7cf
+    background-color: #8dd7cf;
+    border: 1px solid #45e0d1;
 }
 .indisponivel{
     background-color: #fbe192;
+    border: 1px solid #e4b017;
+}
+
+.legenda{
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+}
+.legenda div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.legenda p{
+    margin-top: 8px;
+    font-size: 13px;
+    color: #4e5a65;
+}
+.informacoes-comprador{
+    margin: 41px 24px;
+}
+input{
+    margin-bottom: 7px;
+    width: 90vw;
+    height: 51px;
+    border-radius: 3px;
+    border: 1px solid #D5D5D5;
+    background-color: #ffffff;
+    font-style: italic;
+    font-size: 18px;
+    color: #afafaf;
+}
+h3{
+    font-size: 18px;
+    color: #293845;
+}
+.reservar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.reservar-assentos{
+    font-size: 18px;
+    line-height: 21.09px;
+    width: 225px;
+    height: 42px;
+    background-color: #e8833a;
+    border-radius: 3px;
+    border: 1px solid #f66905;
+    color: #ffffff;
 }
