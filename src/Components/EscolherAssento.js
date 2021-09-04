@@ -3,6 +3,7 @@ import { useEffect, useState} from "react";
 import { useParams } from "react-router";
 import axios from 'axios';
 import Assento from "./Assento";
+import {Link} from "react-router-dom";
 
 export default function EscolherAssento(){
     
@@ -61,7 +62,9 @@ export default function EscolherAssento(){
                 ></input>
             </div>
             <div className="reservar">
-                <button className="reservar-assentos">Reservar assento(s)</button>
+                <Link to="/sucesso">
+                    <button className="reservar-assentos">Reservar assento(s)</button>
+                </Link>
             </div>
         </div>
     );

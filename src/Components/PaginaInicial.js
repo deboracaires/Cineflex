@@ -5,12 +5,15 @@ export default function PaginaInicial(props){
     const {
         image, 
         id, 
-        filmeSelecionado
+        filmeSelecionado,
+        titulo
     } = props;
 
     function salvarId(){
-        filmeSelecionado(id);
+        filmeSelecionado(titulo);
     }
+
+
     return (
         <div>
         <Link to={`/sessoes/${id}`}>

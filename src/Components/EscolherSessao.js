@@ -7,7 +7,7 @@ import Sessao from "./Sessao";
 
 
 
-export default function EscolherSessao(){
+export default function EscolherSessao({dataSelecionada, horarioSelecionado}){
     
     const [sessoes, setSessoes] = useState([]);
     
@@ -35,6 +35,8 @@ export default function EscolherSessao(){
             data={sessao.date} 
             horarios={sessao.showtimes} 
             weekday={sessao.weekday}
+            dataSelecionada={dataSelecionada}
+            horarioSelecionado={horarioSelecionado}
             />)}
         
         </div>

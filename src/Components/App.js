@@ -3,20 +3,23 @@ import Header from "./Header";
 import PaginaInicial from "./PaginaInicial";
 import EscolherSessao from "./EscolherSessao";
 import EscolherAssento from "./EscolherAssento";
+import Sucesso from "./Sucesso";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import React from "react";
 
-import "./css/reset.css";
-import "./css/style.css";
+import "../css/reset.css";
+import "../css/style.css";
 
 
 export default function App(){
     
     const [filmes, setFilmes] = useState([]);
-    const [sessoes, setSessoes] = useState([]);
-    const [idFilmeSelecionado, setIdFilmeSelecionado] = useState(0);
-
+    const [data, setData] = useState([]);
+    const [horario, setHorario] = useState([]);
+    const [filmeSelecionado, setFilmeSelecionado] = useState([]);
+    
+    
     useEffect(() => {
         const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies");
         promisse.then(resposta => {
@@ -28,13 +31,16 @@ export default function App(){
         return "carregando filmes...";
     }
 
-
-    
-
-    function filmeSelecionado(id){
-        setIdFilmeSelecionado(id);
+    function tituloFilmeSelecionado(titulo){
+        setFilmeSelecionado(titulo);
     }
-
+    function dataSelecionada(date){
+        setData(date);
+    }
+    function horarioSelecionado(time){
+        setHorario(time);
+    }
+    
     
    
     return(
@@ -49,16 +55,28 @@ export default function App(){
                         key = {index} 
                         image={filme.posterURL} 
                         id = {filme.id} 
-                        filmeSelecionado={filmeSelecionado}
+                        titulo={filme.title}
+                        filmeSelecionado={tituloFilmeSelecionado}
                         />)}
                     </div>
                 </Route>
                 <Route path="/sessoes/:idSessoes" exact>
-                    <EscolherSessao />
+                    <EscolherSessao 
+                    dataSelecionada={dataSelecionada}
+                    horarioSelecionado={horarioSelecionado}
+                    />
                 </Route>
                 <Route path="/assentos/:idAssento" exact>
                     <EscolherAssento />
                 </Route>
+                <Route path="/sucesso" exact>
+                    <Sucesso 
+                    data = {data}
+                    horario={horario}
+                    titulo={filmeSelecionado}
+                    />
+                </Route>
+
             </Switch>
         </BrowserRouter>
     );

@@ -152,3 +152,50 @@ h3{
     border: 1px solid #f66905;
     color: #ffffff;
 }
+.texto-sucesso{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 110px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+h4{
+    color: #247a6b;
+    font-weight: 700;
+    font-size: 24px;
+    width: 150px;
+}
+.conteiner-info-final{
+    margin-left: 28px;
+    margin-bottom: 40px;
+}
+.titulo-informacoes-finais{
+    font-weight: 700;
+    font-size: 24px;
+    color: #293845;
+    line-height: 28.13px;
+    margin-bottom: 12px;
+    margin-top: 10px;
+}
+.informacao-final{
+    font-weight: 400;
+    font-size: 22px;
+    color: #293845;
+    line-height:25.78px;
+    margin-bottom: 5px;
+}
+.conteiner-voltar-home{
+    display: flex;
+    justify-content: center;
+}
+.voltar-home{
+    font-size: 18px;
+    line-height: 21.09px;
+    width: 225px;
+    height: 42px;
+    background-color: #e8833a;
+    border-radius: 3px;
+    border: 1px solid #f66905;
+    color: #ffffff;
+}
