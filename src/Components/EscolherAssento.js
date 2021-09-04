@@ -5,7 +5,7 @@ import axios from 'axios';
 import Assento from "./Assento";
 import {Link} from "react-router-dom";
 
-export default function EscolherAssento({assentosSelecionados, removerAssento}){
+export default function EscolherAssento({assentosSelecionados, removerAssento, saveNomeComprador, saveCpfComprador}){
     
     const [assentos, setAssentos] = useState([]);
     const [nomeComprador, setNomeComprador] = useState("");
@@ -21,6 +21,13 @@ export default function EscolherAssento({assentosSelecionados, removerAssento}){
     }, []);
     if(assentos === null){
         return "carregando assentos...";
+    }
+
+    function salvarDadosComprador(){
+        if(nomeComprador !== "" && cpfComprador !== ""){
+            saveNomeComprador(nomeComprador);
+            saveCpfComprador(cpfComprador);
+        }
     }
     
    
@@ -69,7 +76,7 @@ export default function EscolherAssento({assentosSelecionados, removerAssento}){
             </div>
             <div className="reservar">
                 <Link to="/sucesso">
-                    <button className="reservar-assentos">Reservar assento(s)</button>
+                    <button className="reservar-assentos" onClick={salvarDadosComprador}>Reservar assento(s)</button>
                 </Link>
             </div>
         </div>

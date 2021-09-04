@@ -1,9 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-export default function Sucesso({data, horario, titulo, assentos}){
+export default function Sucesso({data, horario, titulo, assentos, nomeComprador, cpfComprador, resetaPag}){
     
-    const assentosNumeros = assentos.map(assento => parseInt(assento));
+    const assentosNumeros = assentos.map(assento => parseInt(assento,10));
     assentosNumeros.sort(function(a, b){
         return a-b;
     });
@@ -37,13 +37,13 @@ export default function Sucesso({data, horario, titulo, assentos}){
                     Comprador
                 </p>
                 <p className="informacao-final">
-                    {titulo}
+                    {nomeComprador}
                 </p>
                 <p className="informacao-final">
-                    {data} {horario}
+                    {cpfComprador}
                 </p>
             </div>
-            <div className="conteiner-voltar-home">
+            <div className="conteiner-voltar-home" onClick={resetaPag}>
                 <Link to="/">
                     <button className="voltar-home">Voltar para Home</button>
                 </Link>
