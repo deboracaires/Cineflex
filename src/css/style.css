@@ -85,6 +85,9 @@ h2{
     height: 26px;
     margin-right: 7px;
     margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .disponivel{
     background-color: #c3cfd9

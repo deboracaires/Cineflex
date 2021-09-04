@@ -1,27 +1,43 @@
-import {Link} from "react-router-dom";
+
+import React from "react";
+import { useEffect, useState} from "react";
 import { useParams } from "react-router";
+import axios from 'axios';
+import Sessao from "./Sessao";
+
 
 
 export default function EscolherSessao(){
     
+    const [sessoes, setSessoes] = useState([]);
+    
     const {idSessoes} = useParams();
-    console.log(idSessoes);
-
+    
+    console.log(idSessoes)
+    useEffect(() => {
+        const promisse = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies/${idSessoes}/showtimes`);
+        promisse.then(resposta => {
+           setSessoes(resposta.data.days);
+        });
+    }, []);
+    
+    if(sessoes === null){
+        return "carregando filmes...";
+    }
+    
     
     return(
-        <>
-        <h1>Selecione o horário</h1>
-        <div className="sessao roboto">
-            <h2>Quinta-feira - 24/06/2021</h2>
-            <Link to="/assentos"><button className="horario-sessao">15:00</button></Link>
-            <Link to="/assentos"><button className="horario-sessao">19:00</button></Link>
-            </div>
-        <div className="sessao">
-            <h2>Quinta-feira - 24/06/2021</h2>
-            <Link to="/assentos"><button className="horario-sessao">15:00</button></Link>
-            <Link to="/assentos"><button className="horario-sessao">19:00</button></Link>
-        </div>
+        <div>
+            <h1>Selecione o horário</h1>
+            {sessoes.map((sessao, index) => 
+            <Sessao 
+            key={index} 
+            id={sessao.id} 
+            data={sessao.date} 
+            horarios={sessao.showtimes} 
+            weekday={sessao.weekday}
+            />)}
         
-        </>
+        </div>
     );
 }
