@@ -18,8 +18,8 @@ export default function App(){
     const [data, setData] = useState([]);
     const [horario, setHorario] = useState([]);
     const [filmeSelecionado, setFilmeSelecionado] = useState([]);
-    
-    
+    const [assentosSelecionados, setAssentosSelecionados] = useState([]);
+
     useEffect(() => {
         const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies");
         promisse.then(resposta => {
@@ -40,7 +40,14 @@ export default function App(){
     function horarioSelecionado(time){
         setHorario(time);
     }
-    
+    function assentos(numero){
+        const novoAssento = [...assentosSelecionados, numero];
+        setAssentosSelecionados(novoAssento);
+    }
+    function removerAssento(numero){
+        const novosAssentos = assentosSelecionados.filter((num)=>  num !== numero);
+        setAssentosSelecionados(novosAssentos);
+    }
     
    
     return(
@@ -67,13 +74,18 @@ export default function App(){
                     />
                 </Route>
                 <Route path="/assentos/:idAssento" exact>
-                    <EscolherAssento />
+                    <EscolherAssento 
+                    assentosSelecionados={assentos}
+                    removerAssento={removerAssento}
+                    />
                 </Route>
                 <Route path="/sucesso" exact>
                     <Sucesso 
                     data = {data}
                     horario={horario}
                     titulo={filmeSelecionado}
+                    assentos={assentosSelecionados}
+                    
                     />
                 </Route>
 

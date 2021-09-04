@@ -1,7 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-export default function Sucesso({data, horario, titulo}){
+export default function Sucesso({data, horario, titulo, assentos}){
+    
+    const assentosNumeros = assentos.map(assento => parseInt(assento));
+    assentosNumeros.sort(function(a, b){
+        return a-b;
+    });
+
     return (
         <div>
             <div className="texto-sucesso">
@@ -24,12 +30,7 @@ export default function Sucesso({data, horario, titulo}){
                 <p className="titulo-informacoes-finais">
                     Ingressos
                 </p>
-                <p className="informacao-final">
-                    {titulo}
-                </p>
-                <p className="informacao-final">
-                    {data} {horario}
-                </p>
+                {assentosNumeros.map((assento, index) => <p key = {index} className="informacao-final">Assento {assento}</p>)}
             </div>
             <div className="conteiner-info-final">
                 <p className="titulo-informacoes-finais">

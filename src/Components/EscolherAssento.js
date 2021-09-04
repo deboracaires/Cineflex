@@ -5,7 +5,7 @@ import axios from 'axios';
 import Assento from "./Assento";
 import {Link} from "react-router-dom";
 
-export default function EscolherAssento(){
+export default function EscolherAssento({assentosSelecionados, removerAssento}){
     
     const [assentos, setAssentos] = useState([]);
     const [nomeComprador, setNomeComprador] = useState("");
@@ -28,7 +28,13 @@ export default function EscolherAssento(){
         <div>
             <h1>Selecione o(s) assento(s)</h1>
             <div className="botoes-conteiner">
-                {assentos.map((assento, index)=> <Assento key ={index} name={assento.name} isAvailable={assento.isAvailable}/> )}
+                {assentos.map((assento, index)=> <Assento 
+                key ={index} 
+                name={assento.name} 
+                salvarAssento={assentosSelecionados} 
+                removerAssento={removerAssento}
+                isAvailable={assento.isAvailable}
+                /> )}
                 <div className="legenda">
                     <div>
                         <button className="botao-assento selecionado"></button>
