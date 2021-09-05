@@ -4,10 +4,11 @@ import { useEffect, useState} from "react";
 import { useParams } from "react-router";
 import axios from 'axios';
 import Sessao from "./Sessao";
+import Rodape from "./Rodape";
 
 
 
-export default function EscolherSessao({dataSelecionada, horarioSelecionado}){
+export default function EscolherSessao({dataSelecionada, horarioSelecionado, imagem, titulo}){
     
     const [sessoes, setSessoes] = useState([]);
     
@@ -24,9 +25,8 @@ export default function EscolherSessao({dataSelecionada, horarioSelecionado}){
         return "carregando sessoes...";
     }
     
-    
     return(
-        <div>
+        <div className="sessoes-conteiner">
             <h1>Selecione o horário</h1>
             {sessoes.map((sessao, index) => 
             <Sessao 
@@ -38,7 +38,10 @@ export default function EscolherSessao({dataSelecionada, horarioSelecionado}){
             dataSelecionada={dataSelecionada}
             horarioSelecionado={horarioSelecionado}
             />)}
-        
+            <Rodape 
+            imagem={imagem}
+            titulo={titulo}
+            />
         </div>
     );
 }

@@ -4,8 +4,9 @@ import { useParams } from "react-router";
 import axios from 'axios';
 import Assento from "./Assento";
 import {Link} from "react-router-dom";
+import Rodape from "./Rodape";
 
-export default function EscolherAssento({assentosSelecionados, removerAssento, saveNomeComprador, saveCpfComprador}){
+export default function EscolherAssento({assentosSelecionados, removerAssento, saveNomeComprador, saveCpfComprador, imagem, titulo, data, horario}){
     
     const [assentos, setAssentos] = useState([]);
     const [nomeComprador, setNomeComprador] = useState("");
@@ -32,7 +33,7 @@ export default function EscolherAssento({assentosSelecionados, removerAssento, s
     
    
     return(
-        <div>
+        <div className="assentos-conteiner">
             <h1>Selecione o(s) assento(s)</h1>
             <div className="botoes-conteiner">
                 {assentos.map((assento, index)=> <Assento 
@@ -79,6 +80,12 @@ export default function EscolherAssento({assentosSelecionados, removerAssento, s
                     <button className="reservar-assentos" onClick={salvarDadosComprador}>Reservar assento(s)</button>
                 </Link>
             </div>
+            <Rodape 
+            imagem={imagem}
+            titulo={titulo}
+            data={data}
+            horario={horario}
+            />
         </div>
     );
 }

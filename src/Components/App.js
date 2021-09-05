@@ -21,6 +21,7 @@ export default function App(){
     const [assentosSelecionados, setAssentosSelecionados] = useState([]);
     const [nomeComprador, setNomeComprador] = useState("");
     const [cpfComprador, setCpfComprador] = useState("");
+    const [imagemFilme, setImagemFilme] = useState("");
 
     useEffect(() => {
         const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies");
@@ -56,11 +57,13 @@ export default function App(){
     function saveCpfComprador(cpf){
         setCpfComprador(cpf);
     }
+    function salvaImagem(img){
+        setImagemFilme(img);
+    }
     function resetaPag(){
         window.location.reload();
     }
     
-   
     return(
         <BrowserRouter>
             <Header/>
@@ -75,6 +78,7 @@ export default function App(){
                         id = {filme.id} 
                         titulo={filme.title}
                         filmeSelecionado={tituloFilmeSelecionado}
+                        salvaImagem={salvaImagem}
                         />)}
                     </div>
                 </Route>
@@ -82,6 +86,8 @@ export default function App(){
                     <EscolherSessao 
                     dataSelecionada={dataSelecionada}
                     horarioSelecionado={horarioSelecionado}
+                    imagem={imagemFilme}
+                    titulo={filmeSelecionado}
                     />
                 </Route>
                 <Route path="/assentos/:idAssento" exact>
@@ -90,6 +96,10 @@ export default function App(){
                     removerAssento={removerAssento}
                     saveNomeComprador={saveNomeComprador}
                     saveCpfComprador={saveCpfComprador}
+                    imagem={imagemFilme}
+                    titulo={filmeSelecionado}
+                    data={data}
+                    horario={horario}
                     />
                 </Route>
                 <Route path="/sucesso" exact>

@@ -6,18 +6,19 @@ export default function PaginaInicial(props){
         image, 
         id, 
         filmeSelecionado,
-        titulo
+        titulo,
+        salvaImagem
     } = props;
 
-    function salvarId(){
+    function salvarFilme(){
         filmeSelecionado(titulo);
+        salvaImagem(image);
     }
-
 
     return (
         <div>
         <Link to={`/sessoes/${id}`}>
-            <div className="filme" onClick={salvarId}>
+            <div className="filme" onClick={salvarFilme}>
                 <img src={image} alt="" />
             </div>
         </Link>
