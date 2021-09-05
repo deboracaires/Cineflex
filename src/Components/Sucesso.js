@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+
 export default function Sucesso({data, horario, titulo, assentos, nomeComprador, cpfComprador, resetaPag}){
     
     const assentosNumeros = assentos.map(assento => parseInt(assento,10));
@@ -8,6 +9,7 @@ export default function Sucesso({data, horario, titulo, assentos, nomeComprador,
         return a-b;
     });
 
+    
     return (
         <div>
             <div className="texto-sucesso">

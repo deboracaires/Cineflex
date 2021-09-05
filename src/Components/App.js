@@ -22,6 +22,7 @@ export default function App(){
     const [nomeComprador, setNomeComprador] = useState("");
     const [cpfComprador, setCpfComprador] = useState("");
     const [imagemFilme, setImagemFilme] = useState("");
+    const [idAssentos, setIdAssentos] = useState([]);
 
     useEffect(() => {
         const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies");
@@ -43,13 +44,18 @@ export default function App(){
     function horarioSelecionado(time){
         setHorario(time);
     }
-    function assentos(numero){
+    function assentos(numero, id){
         const novoAssento = [...assentosSelecionados, numero];
         setAssentosSelecionados(novoAssento);
+        const novaIdAssento = [...idAssentos, id];
+        setIdAssentos(novaIdAssento);
+        
     }
-    function removerAssento(numero){
+    function removerAssento(numero, id){
         const novosAssentos = assentosSelecionados.filter((num)=>  num !== numero);
         setAssentosSelecionados(novosAssentos);
+        const novasIdsAssentos = idAssentos.filter((num)=>  num !== id);
+        setIdAssentos(novasIdsAssentos);
     }
     function saveNomeComprador(nome){
         setNomeComprador(nome);
@@ -100,6 +106,7 @@ export default function App(){
                     titulo={filmeSelecionado}
                     data={data}
                     horario={horario}
+                    idAssentos={idAssentos}
                     />
                 </Route>
                 <Route path="/sucesso" exact>

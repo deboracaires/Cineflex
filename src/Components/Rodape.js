@@ -8,7 +8,7 @@ export default function Rodape({imagem, titulo, data, horario}){
             </div>
             <div className="texto-rodape">
                 <p>{titulo}</p>
-                <p>{data} - {horario}</p>
+                <p>{data}  {horario}</p>
             </div>
         </div>
     );

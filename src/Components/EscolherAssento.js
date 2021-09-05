@@ -6,7 +6,7 @@ import Assento from "./Assento";
 import {Link} from "react-router-dom";
 import Rodape from "./Rodape";
 
-export default function EscolherAssento({assentosSelecionados, removerAssento, saveNomeComprador, saveCpfComprador, imagem, titulo, data, horario}){
+export default function EscolherAssento({assentosSelecionados, removerAssento, saveNomeComprador, saveCpfComprador, imagem, titulo, data, horario, idAssentos}){
     
     const [assentos, setAssentos] = useState([]);
     const [nomeComprador, setNomeComprador] = useState("");
@@ -28,9 +28,17 @@ export default function EscolherAssento({assentosSelecionados, removerAssento, s
         if(nomeComprador !== "" && cpfComprador !== ""){
             saveNomeComprador(nomeComprador);
             saveCpfComprador(cpfComprador);
+
+            const dados = 
+            { 
+                ids: idAssentos,
+                name: nomeComprador,
+                cpf: cpfComprador
+            };
+            axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/seats/book-many', dados)
+            
         }
     }
-    
    
     return(
         <div className="assentos-conteiner">
@@ -42,6 +50,7 @@ export default function EscolherAssento({assentosSelecionados, removerAssento, s
                 salvarAssento={assentosSelecionados} 
                 removerAssento={removerAssento}
                 isAvailable={assento.isAvailable}
+                id={assento.id}
                 /> )}
                 <div className="legenda">
                     <div>

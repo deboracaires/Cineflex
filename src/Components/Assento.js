@@ -7,19 +7,21 @@ export default function Assento(props){
         name, 
         isAvailable,
         salvarAssento,
-        removerAssento
+        removerAssento,
+        id
     } = props;
     const [selecionar, setSelecionar]=useState("botao-assento disponivel");
+    
 
     function selecionarAssento(){
         if(isAvailable){
             if(selecionar === "botao-assento selecionado"){
                 setSelecionar("botao-assento disponivel")
-                removerAssento(name);
+                removerAssento(name, id);
                 
             }else{
                 setSelecionar("botao-assento selecionado");
-                salvarAssento(name);
+                salvarAssento(name, id);
             }
         }else{
             alert("Esse assento não está disponível");
